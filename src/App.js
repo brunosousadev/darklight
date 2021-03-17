@@ -1,11 +1,16 @@
 import React from 'react';
+import {useColorScheme} from 'react-native';
+import {ThemeProvider} from 'styled-components';
+import Welcome from './Components/Welcome';
 
-import {Text, View} from 'react-native';
+import themes from './themes';
 
 export default function App() {
+  const diveceTheme = useColorScheme();
+  const theme = themes[diveceTheme] || themes.dark;
   return (
-    <View>
-      <Text>Hello World</Text>
-    </View>
+    <ThemeProvider theme={theme}>
+      <Welcome />
+    </ThemeProvider>
   );
 }
